@@ -1,9 +1,9 @@
 function jumper(){
   //this is a part of function, jumper
-  this.x = 1;
-  this.y = 100;
+  this.x = w/2;
+  this.y = 0;
   this.gravity = 0.5; //force bringing jumper down
-  this.lift = -10; //force opposing force of gravity
+  this.lift = -15; //force opposing force of gravity
   this.velocity = 0; //speed of gravity force
   
   //building a function to display on the screen. This is where i put my values of what the jumper would look like

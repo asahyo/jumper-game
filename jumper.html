@@ -23,16 +23,27 @@
         }
 
         function draw(){
+          console.log(jumper.x, jumper.y);
           clear();
           jumper.show();
           jumper.update();
-            
+          //move left
+          if((keyIsDown(37)) && (jumper.x > 25)){
+            jumper.x -= 7;
+          }
+          //move right
+          if((keyIsDown(39)) && (jumper.x < w)){
+            jumper.x += 7;
+          }
+          
         }
         
         function keyPressed(){
+          //jump
           if(keyCode === 32){
             jumper.up();
           }
+          
         }
 
         </script>
