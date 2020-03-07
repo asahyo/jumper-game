@@ -5,7 +5,7 @@ function barrier(){
   this.x = w-100;
   this.y = h-300;
   
-  this.gravity = 0.5; //force bringing jumper down
+  this.gravity = 0.3;  //0.3 //force bringing jumper down
   this.lift = -10; //force opposing force of gravity
   this.velocity = 0; //speed of gravity force
 
@@ -37,4 +37,5 @@ function barrier(){
       this.velocity = 0;
     }
   }
+  
 }
