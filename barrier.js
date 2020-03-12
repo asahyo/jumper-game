@@ -1,5 +1,5 @@
 function barrier(){
-  this.width = 50;
+  this.width = 40;
   this.height = 200;
   
   this.x = w-100;
@@ -15,12 +15,7 @@ function barrier(){
     rect(this.x, this.y, this.width, this.height)
   }
   
-  //build a function called up that will take initial velocity and modify by the opposing gravity
-  //this.up = function(){
-   // this.velocity += this.lift;
-  //}
-  
-  //this will continuously update the jumper
+  //this will continuously update the barrier
   this.update = function(){
     this.velocity += this.gravity;
     this.x -= this.velocity;
@@ -31,11 +26,7 @@ function barrier(){
       this.y = Math.floor((Math.random()* h) + 10);
       this.velocity = 0;
     }
-    //this will prevent jumper from leaving ceiling
-    if(this.y < 0){
-      this.y = 0;
-      this.velocity = 0;
-    }
   }
+  
   
 }

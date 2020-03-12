@@ -3,6 +3,7 @@
         <script src = "p5.min.js"></script>
         <script src = "jumper.js"></script>
         <script src = "barrier.js"></script>
+        <script src = "https://cdn.rawgit.com/bmoren/p5.collide2D/cfb05302/p5.collide2d.min.js"></script>
         <style>
           body{
             margin: 0;
@@ -18,19 +19,37 @@
         
         var jumper  = new jumper();
 
-        var bar = [];
+        var bars = [];
         var i;
+        
+        var hit = false;
+        var jumpcount = 0;
         
         function setup(){
           createCanvas(w, h);
-          for (var i = 0; i < 2; i++) { //i<2 becomes you want 2 barriers
-            bar.push(new barrier());
+          //i<2 if you want 2 barriers
+          for (var i = 0; i < 2; i++) {
+            bars.push(new barrier());
           }
         }
 
         function draw(){
-          console.log(jumper.x, jumper.y);
+          //console.log(jumper.x, jumper.y);
           clear();
+          
+          for (var i = 0; i < 2; i++) {
+            bars[i].show();
+            bars[i].update();
+            hit = collideRectCircle(bars[i].x, bars[i].y, bars[i].width, bars[i].height, jumper.x, jumper.y, 50);
+            if(hit === true){
+              window.alert("game over");
+              noLoop();
+            }
+            else{
+              jumper.gravity = 0.5;
+            }
+          }
+          
           jumper.show();
           //barrier.show()
           jumper.update();
@@ -44,20 +63,19 @@
           if((keyIsDown(39)) && (jumper.x < w)){
             jumper.x += 7;
           }
-          for (var i = 0; i < bar.length; i++) {
-            bar[i].show();
-            bar[i].update();
-            
-          }
+          
         }
         
         function keyPressed(){
           //jump
           if(keyCode === 32){
             jumper.up();
+            jumpcount++;
           }
-          
+ 
         }
+        
+        
 
         </script>
     </body>

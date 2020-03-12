@@ -9,12 +9,15 @@ function jumper(){
   //building a function to display on the screen. This is where i put my values of what the jumper would look like
   this.show = function(){
     fill(255, 0, 0);
-    ellipse(this.x, this.y, 50, 50)
+    ellipse(this.x, this.y, 50, 50);
   }
   
   //build a function called up that will take initial velocity and modify by the opposing gravity
   this.up = function(){
-    this.velocity += this.lift;
+    //makes jumper only able to jump once or twice
+    if(jumpcount < 3){
+      this.velocity += this.lift;
+    }
   }
   
   //this will continuously update the jumper
@@ -26,6 +29,8 @@ function jumper(){
     if(this.y > h){
       this.y = h;
       this.velocity = 0;
+      //this will reset the jumcount to 0 after it hits the floor
+      jumpcount = 0;
     }
     //this will prevent jumper from leaving ceiling
     if(this.y < 0){
@@ -34,8 +39,7 @@ function jumper(){
     }
   }
   
-  
-  
+
   
   
 }
